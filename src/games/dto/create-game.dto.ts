@@ -1,3 +1,5 @@
+// src/games/dto/create-game.dto.ts
+
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { SystemRequirementsDto } from './system-requirements.dto';
 import { SystemDescriptionsDto } from './description.dto';
@@ -8,13 +10,13 @@ export class CreateGameDto {
   title: string;
 
   @ApiProperty({ description: 'The price of the game on the market.' })
-  market_Price: number;
+  marketPrice: number;
 
   @ApiProperty({ description: 'Whether the game has a discount.' })
-  has_Discount: boolean;
+  hasDiscount: boolean;
 
   @ApiProperty({ description: 'The release date of the game.' })
-  release_Date: Date;
+  releaseDate: Date;
 
   @ApiProperty({ description: 'The beta release date of the game.', required: false })
   betaDate?: Date;
@@ -25,8 +27,8 @@ export class CreateGameDto {
   @ApiProperty({ description: 'The company that developed the game.' })
   developer: string;
 
-  @ApiProperty({ description: 'The platform(s) on which the game is available.' })
-  platform: string[];
+  @ApiProperty({ description: 'The platform on which the game is available.' })
+  platform: string; // تغییر به رشته ساده
 
   // Additional fields you had
   @ApiProperty({ description: 'The game\'s genres.' })
@@ -36,16 +38,16 @@ export class CreateGameDto {
   tags: string[];
 
   @ApiProperty({ description: 'URL for the game trailer.' })
-  trailer_Url: string;
+  trailerUrl: string; // تغییر نام
 
   @ApiProperty({ description: 'List of supported languages.' })
-  supported_Languages: string[];
+  supportedLanguages: string[]; // تغییر نام
 
   @ApiProperty({ type: SystemRequirementsDto })
-  minimum_System_Requirements: SystemRequirementsDto;
+  minimumSystemRequirements: SystemRequirementsDto;
 
   @ApiPropertyOptional({ type: SystemRequirementsDto })
-  recommended_System_Requirements?: SystemRequirementsDto;
+  recommendedSystemRequirements?: SystemRequirementsDto;
 
   @ApiProperty({ type: SystemDescriptionsDto })
   description: SystemDescriptionsDto;
