@@ -1,7 +1,24 @@
-// src/games/schemas/game.schema.ts
-
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
+
+// کلاس جداگانه برای سیستم مورد نیاز
+@Schema()
+class SystemRequirements {
+  @Prop()
+  os: string;
+
+  @Prop()
+  processor: string;
+
+  @Prop()
+  graphicsCard: string;
+
+  @Prop()
+  ram: string;
+
+  @Prop()
+  storage: string;
+}
 
 export type GameDocument = HydratedDocument<Game>;
 
@@ -10,32 +27,56 @@ export class Game {
   @Prop({ required: true })
   title: string;
 
-  // استفاده از marketPrice به جای price
   @Prop()
   marketPrice: number;
 
-  // اضافه کردن فیلد hasDiscount
   @Prop()
   hasDiscount: boolean;
   
-  // اضافه کردن فیلد platform که در DTO شما نبود
   @Prop()
   platform: string;
 
   @Prop()
   releaseDate: Date;
   
-  // اضافه کردن فیلد betaDate
   @Prop({ required: false })
   betaDate?: Date;
   
-  // اضافه کردن فیلد image
   @Prop()
   image: string;
   
-  // اضافه کردن فیلد developer
   @Prop()
   developer: string;
+
+  // فیلدهای توضیحات
+  @Prop()
+  shortDescription: string;
+
+  @Prop()
+  persianDescription: string;
+
+  @Prop()
+  englishDescription: string;
+
+  // فیلدهای جدید
+  @Prop([String])
+  genres: string[];
+
+  @Prop([String])
+  tags: string[];
+
+  @Prop()
+  trailerUrl: string;
+
+  @Prop([String])
+  supportedLanguages: string[];
+
+  // سیستم مورد نیاز به صورت تو در تو
+  @Prop({ type: SystemRequirements })
+  minimumSystemRequirements: SystemRequirements;
+
+  @Prop({ type: SystemRequirements })
+  recommendedSystemRequirements?: SystemRequirements;
 }
 
 export const GameSchema = SchemaFactory.createForClass(Game);

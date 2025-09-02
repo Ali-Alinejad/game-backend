@@ -3,7 +3,7 @@ import { GamesService } from './games.service';
 import { Game } from './schemas/game.schema';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 // اطمینان حاصل کنید که مسیر درست import شده است
-import { CreateGameDto } from './create-game.dto'; 
+import { CreateGameDto } from './dto/create-game.dto'; 
 
 @ApiTags('games')
 @Controller('games')
