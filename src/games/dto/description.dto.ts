@@ -1,12 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class SystemDescriptionsDto {
-  @ApiProperty()
+@ApiProperty({ description: 'The required operating system.' })
   short: string;
 
-  @ApiProperty()
+@ApiProperty({ description: 'The required operating system.' })
   persian: string;
 
-  @ApiProperty()
+@ApiProperty({ description: 'The required operating system.' })
   english: string;
 }
